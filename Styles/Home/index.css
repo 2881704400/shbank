@@ -17,10 +17,111 @@ table tr{
 	border-bottom: 1px solid #ddd;
 }
 table td{
-	
 	height: 70px;
 	vertical-align: middle !important;
 	
+}
+/* 复杂选择样式 */
+.borRig{
+	border-right: 1px solid #eee;
+}
+.memSelect{
+	position: absolute;
+	width: 90%;
+	background: #fff;
+	height:254px ;
+	border:1px solid #ccc;
+	border-top: none 0;
+
+}
+.memSelect .selectHeader{
+	width: 100%;
+	height: 40px;
+	line-height: 34px;
+	border-bottom: 1px solid #eee;
+	margin-bottom: 0;
+}
+.memSelect .selectHeader .active{
+	color: #337ab7; 
+}
+.memSelect .selectHeader li{
+	float: left;
+	width: 50%;
+	text-align: center;
+
+}
+.memSelect .selectItem{
+	height: 200px;
+	overflow: auto;
+	display: none;
+}
+.memSelect .selectItem.active{
+	display: block;
+}
+.memSelect .selectItem .sec{
+	width: 100%;
+	border-bottom: 1px solid #eee;
+}
+.memSelect .selectItem .sec .sec_tit{
+	width: auto;
+	height: 34px;
+	padding-left: 15px;
+	line-height: 34px;
+	margin-bottom: 0;
+}
+.memSelect .selectItem .sec .sec_tit img{
+	float: right;
+	height: 18px;
+	width: 18px;
+	margin-top: 8px;
+	margin-right: 20px;
+}
+.memSelect .selectItem .sec .thr{
+	display: none;
+}
+.memSelect .selectItem .sec .thr li{
+	width: auto;
+}
+.memSelect .selectItem .sec .thr li .thr_tit{
+	width: auto;
+	height: 34px;
+	line-height: 34px;
+
+	padding-left: 25px;
+}
+.memSelect .selectItem .sec .thr li .thr_tit input{
+	position: relative;
+	top: 2px;
+	margin-right: 15px;
+}
+
+.selectItem .selectOne{
+	width: auto;
+	height: 34px;
+
+}
+.selectItem .selectOne .thr_tit{
+	height: 34px;
+	padding-left: 15px;
+	line-height: 34px;
+	border-bottom: 1px solid #eee;
+}
+.selectItem .selectOne .thr_tit input{
+	position: relative;
+	top: 2px;
+	margin-right: 15px;
+}
+
+.selectItem p:hover{
+	background: #eee;
+}
+
+#menuTable table td{
+	height: 90px;
+	vertical-align: middle !important;
+}
+#menuTable table tbody tr:hover{
+	background: #eee;
 }
 /*多选样式*/
 /*.select2-container{
@@ -69,7 +170,7 @@ table td{
 	line-height: 20px;
 	/*color: #fff;*/
 	display:block;
-	padding: 15px 15px;
+	padding: 15px 10px;
 	cursor: pointer;
 }
 .navbar-nav li{
@@ -105,7 +206,12 @@ table td{
 	color: #adc0be;
 }
 .nav-logo{height: 50px;width: auto;}
-
+.form-control[readonly]{
+	background: #fff;
+}
+input[type=checkbox][disabled]{
+	cursor:default;
+}
 #pageWrap{
 	border: none 0;
 	top: 50px;
@@ -250,13 +356,21 @@ table td{
 	white-space: nowrap;
 	font-size: 14px;
 }
-
+#mem_group .header_content p{
+	width: 25%;
+}
+#mem_group .table_content  .table_line p{
+	width: 25%;
+}
 #meeting_app .header_content p{
 	width: 10%;
 }
 #meeting_app .table_content .table_line p{
 	width: 10%;
 }
+
+
+
 #hasVip{
 	position: relative;
 	top: 2px;
@@ -333,6 +447,17 @@ table td{
 #card_set .table_content .table_line p{
 	width:20%;
 }
+
+#mem_set .header_content p{
+	width: 14%;
+}
+#mem_set .table_content .table_line p{
+	width:14%;
+}
+
+
+
+
 #access_mem .header_content p{
 	width: 15%;
 }

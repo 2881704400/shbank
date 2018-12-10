@@ -33,20 +33,27 @@ $(function() {
 
 		$.ajax({
 				method:"get",
-				url:"http://168.7.1.192:9000/api/trade/tsp",
+				url:"http://10.7.1.192:9000/api/trade/tsp",
 				async:true,
 				success:function(res){
 //					console.log(res)
 					var dat=JSON.parse(res).Message;
-					var rep=JSON.parse(dat);
-					for(var i=0;i<rep.length;i++){
-						var value=rep[i];
-						var html='<li><span>'+value.cn+'</span><label>'+value.jyl+'</label><label>'+value.avgConsumTime+'</label>'+
-									'<font>'+value.avgSuccessPer+'%</font>'+
-								'</li>';
-						$("#scrollWrap").append(html)
+					if(dat){
+					
+						var rep=JSON.parse(dat);
+						
+						for(var i=0;i<rep.length;i++){
+							var value=rep[i];
+							
+							if(value.jyl!=0&&value.jyl!="-"){
+								var html='<li><span>'+value.cn+'</span><label>'+value.jyl+'</label><label>'+value.avgConsumTime+'</label>'+
+										'<font>'+value.avgSuccessPer+'%</font>'+
+									'</li>';
+								$("#scrollWrap").append(html)
+							}
+							
+						}
 					}
-
 				}
 				
 			})
@@ -66,19 +73,22 @@ $(function() {
 
 	$.ajax({
 		type:"get",
-		url:"http://168.7.1.192:9000/api/trade/net",
+		url:"http://10.7.1.192:9000/api/trade/net",
 		async:false,
 		success:function(res){
+			console.log(res);
 			dat=JSON.parse(res).Message;
-			 mapNet=JSON.parse(dat).rows
-//			 console.log(mapNet)
-			for(var i=0;i<mapNet.length;i++){
-				var value=mapNet[i];
-				if(bankArr.indexOf(value.location)!=-1&&value.ifspeed>=100000000){
-					netData.push(value)
-					namearr.push(value.location)
+			if(dat){
+				mapNet=JSON.parse(dat).rows
+				for(var i=0;i<mapNet.length;i++){
+					var value=mapNet[i];
+					if(bankArr.indexOf(value.location)!=-1&&value.ifspeed>=100000000){
+						netData.push(value)
+						namearr.push(value.location)
+					}
 				}
 			}
+			
 			
 			
 		}
@@ -100,57 +110,61 @@ function drawDepositBalanceChart(id) {
 	var ckArr=[];
 	$.ajax({
 		type:"get",
-		url:"http://168.7.1.192:9000/api/trade/trade",
+		url:"http://10.7.1.192:9000/api/trade/trade",
 		async:false,
 		success:function(res){
 			var dat=JSON.parse(res).Message;
-			var rep=JSON.parse(dat).ck;
-//			console.log(rep)
-			ckArr[0]={
-				value:(rep.qy/10000000000).toFixed(0),
-				name:"企业存款",
-				itemStyle: {
-						normal: {
-							color: '#01B4D2'
-							
-						}
-				}
+			if(dat){
 				
-						
-			}
-			ckArr[1]={
-				value:(rep.xy/10000000000).toFixed(0),
-				name:"协议存款",
-				itemStyle: {
-						normal: {
-							color: '#f00'
-						}
+			
+				var rep=JSON.parse(dat).ck;
+	//			console.log(rep)
+				ckArr[0]={
+					value:(rep.qy/10000000000).toFixed(0),
+					name:"企业存款",
+					itemStyle: {
+							normal: {
+								color: '#01B4D2'
+								
+							}
+					}
+					
+							
 				}
-				
-							
-			}
-			ckArr[2]={
-				value:(rep.cx/10000000000).toFixed(0),
-				name:"储蓄存款",
-				itemStyle: {
-						normal: {
-							color: '#FFB508'
-							
-						}
+				ckArr[1]={
+					value:(rep.xy/10000000000).toFixed(0),
+					name:"协议存款",
+					itemStyle: {
+							normal: {
+								color: '#f00'
+							}
+					}
+					
+								
 				}
-
-							
-			}
-			ckArr[3]={
-				value:(rep.ty/10000000000).toFixed(0),
-				name:"同业存款",
-				itemStyle: {
-						normal: {
-							color: '#9506F3'
-							
-						}
+				ckArr[2]={
+					value:(rep.cx/10000000000).toFixed(0),
+					name:"储蓄存款",
+					itemStyle: {
+							normal: {
+								color: '#FFB508'
+								
+							}
+					}
+	
+								
 				}
-				
+				ckArr[3]={
+					value:(rep.ty/10000000000).toFixed(0),
+					name:"同业存款",
+					itemStyle: {
+							normal: {
+								color: '#9506F3'
+								
+							}
+					}
+					
+				}
 			}
 //cx: 30.51
 //qy: 809.51
@@ -327,13 +341,16 @@ function test2(id) {
 	var data;
 	$.ajax({
 		type:"get",
-		url:"http://168.7.1.192:9000/api/trade/bmc",
+		url:"http://10.7.1.192:9000/api/trade/bmc",
 		async:false,
 		success:function(res){
 //			console.log(res);
 			var dat=JSON.parse(res).Message;
+			if(dat){
+				data=JSON.parse(dat)
+			}
 //			console.log(dat);
-			data=JSON.parse(dat)
+			
 		}
 		
 	});
@@ -526,12 +543,15 @@ function test1(id) {
 	var data;
 	$.ajax({
 		type:"get",
-		url:"http://168.7.1.192:9000/api/trade/trend",
+		url:"http://10.7.1.192:9000/api/trade/trend",
 		async:false,
 		success:function(res){
 			var dat=JSON.parse(res).Message
-			var req=JSON.parse(dat)
+			if(dat){
+				var req=JSON.parse(dat)
 			data=req;
+			}
+			
 //			console.log(req)
 		}
 	});
@@ -715,12 +735,15 @@ function loanChart(id) {
 	var dkArr=[];
 	$.ajax({
 		type:"get",
-		url:"http://168.7.1.192:9000/api/trade/trade",
+		url:"http://10.7.1.192:9000/api/trade/trade",
 		async:false,
 		success:function(res){
 //			['个人贷款', '企业贷款','票据贴现','转贴现买入','贸易融资']
 
 			var dat=JSON.parse(res).Message;
+			if(dat){
+				
+			
 			var rep=JSON.parse(dat).dk;
 			dkArr[0]={
 					value:(rep.gr/10000000000).toFixed(0),
@@ -769,6 +792,7 @@ function loanChart(id) {
 							}
 					}
 				}
+			}
 //			gr: 309.89
 //			my: 48.15
 //			pj: 53.93

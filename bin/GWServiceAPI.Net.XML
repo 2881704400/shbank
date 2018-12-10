@@ -500,58 +500,139 @@
             报警事件
             </summary>
         </member>
-        <member name="M:GWServiceAPI.Net.Controllers.EventController.alarm_config">
+        <member name="M:GWServiceAPI.Net.Controllers.EventController.upd_pwd_oubank(Newtonsoft.Json.Linq.JObject)">
             <summary>
-            获取事件的报警配置
-            </summary>
-        </member>
-        <member name="M:GWServiceAPI.Net.Controllers.EventController.real_evt(Newtonsoft.Json.Linq.JObject)">
-            <summary>
-            获取当前系统报警的实时事件
-            </summary>
-            <param name="obj">obj.levels:报警分类，多个值请用逗号隔开</param>
-        </member>
-        <member name="M:GWServiceAPI.Net.Controllers.EventController.real_evt_count(Newtonsoft.Json.Linq.JObject)">
-            <summary>
-            获取当前实时报警事件的总数
-            </summary>
-            <param name="obj">obj.levels:报警分类，多个分类请用';'符号隔开，多个值请用逗号隔开</param>
-        </member>
-        <member name="M:GWServiceAPI.Net.Controllers.EventController.confirm_evt(Newtonsoft.Json.Linq.JObject)">
-            <summary>
-            确认当前报警事件
+            行外人员修改密码（行外人员修改密码）
             </summary>
             <param name="obj">
-            obj.msg:处理意见
-            obj.shortmsg:是否发送短信
-            obj.tel:发送人的电话
-            obj.evtname:事件名
-            obj.time:事件时间
+             workNo 工号
+             pwd 密码
             </param>
         </member>
-        <member name="M:GWServiceAPI.Net.Controllers.EventController.get_equip_evt(Newtonsoft.Json.Linq.JObject)">
+        <member name="M:GWServiceAPI.Net.Controllers.EventController.get_meeting_out">
             <summary>
-            查询设备事件
+            获取所有的未结束会议（行外人员）
+            </summary>
+        </member>
+        <member name="M:GWServiceAPI.Net.Controllers.EventController.get_meeting_out_search(Newtonsoft.Json.Linq.JObject)">
+            <summary>
+            获取所有的未结束会议搜索（行外人员）
             </summary>
             <param name="obj">
-            obj.times:时间，起始时间,结束时间;(当只有一个时间的时候，为起始时间)
-            obj.equip_no_list:设备号，多个数据时请用“,”号隔开
+             keyWord 关键字
             </param>
         </member>
-        <member name="M:GWServiceAPI.Net.Controllers.EventController.get_set_evt(Newtonsoft.Json.Linq.JObject)">
+        <member name="M:GWServiceAPI.Net.Controllers.EventController.get_all_outbank">
             <summary>
-            查询设置事件
+            获取所有的行外人员
+            </summary>
+        </member>
+        <member name="M:GWServiceAPI.Net.Controllers.EventController.get_all_outbank_search(Newtonsoft.Json.Linq.JObject)">
+            <summary>
+            获取所有的行外人员搜索
             </summary>
             <param name="obj">
-            obj.times:时间，起始时间,结束时间;(当只有一个时间的时候，为起始时间)
-            obj.equip_no_list:设备号，多个数据时请用“,”号隔开
+             keyWord 关键字
             </param>
         </member>
-        <member name="M:GWServiceAPI.Net.Controllers.EventController.get_sys_evt(Newtonsoft.Json.Linq.JObject)">
+        <member name="M:GWServiceAPI.Net.Controllers.EventController.add_outbank_mem(Newtonsoft.Json.Linq.JObject)">
             <summary>
-            查询系统事件(仅支持管理员)
+            添加行外人员
             </summary>
-            <param name="obj">obj.times:时间，起始时间,结束时间;(当只有一个时间的时候，为起始时间)</param>
+            <param name="obj">
+             workNo 工号
+             name 名字
+             sex 0男1女
+             department 部门
+             phone 手机
+             mail 邮件
+             type 类型
+            </param>
+        </member>
+        <member name="M:GWServiceAPI.Net.Controllers.EventController.upd_outbank_mem(Newtonsoft.Json.Linq.JObject)">
+            <summary>
+            编辑行外人员
+            </summary>
+            <param name="obj">
+             workNo 工号
+             name 名字
+             sex 0男1女
+             department 部门
+             phone 手机
+             mail 邮件
+            </param>
+        </member>
+        <member name="M:GWServiceAPI.Net.Controllers.EventController.del_outbank_mem(Newtonsoft.Json.Linq.JObject)">
+            <summary>
+            删除行外人员
+            </summary>
+            <param name="obj">
+             workNo 登录名
+            </param>
+        </member>
+        <member name="M:GWServiceAPI.Net.Controllers.EventController.upd_outbank_pwd(Newtonsoft.Json.Linq.JObject)">
+            <summary>
+            行外人员修改密码
+            </summary>
+            <param name="obj">
+             pwd 密码
+             workNo 工号
+            </param>
+        </member>
+        <member name="M:GWServiceAPI.Net.Controllers.EventController.get_memgroup">
+            <summary>
+            获取所有人员分组
+            </summary>
+        </member>
+        <member name="M:GWServiceAPI.Net.Controllers.EventController.get_memgroup_list(Newtonsoft.Json.Linq.JObject)">
+            <summary>
+            获取分组的成员
+            </summary>
+            <param name="obj">
+            id 分组id
+            </param>
+        </member>
+        <member name="M:GWServiceAPI.Net.Controllers.EventController.add_memgroup(Newtonsoft.Json.Linq.JObject)">
+            <summary>
+            新建分组
+            </summary>
+            <param name="obj">
+            name 分组名
+            </param>
+        </member>
+        <member name="M:GWServiceAPI.Net.Controllers.EventController.upd_memgroup(Newtonsoft.Json.Linq.JObject)">
+            <summary>
+            编辑分组
+            </summary>
+            <param name="obj">
+             name 分组名
+             id 分组id
+            </param>
+        </member>
+        <member name="M:GWServiceAPI.Net.Controllers.EventController.del_memgroup(Newtonsoft.Json.Linq.JObject)">
+            <summary>
+            删除分组
+            </summary>
+            <param name="obj">
+            id id
+            </param>
+        </member>
+        <member name="M:GWServiceAPI.Net.Controllers.EventController.del_memgroup_item(Newtonsoft.Json.Linq.JObject)">
+            <summary>
+            删除分组人员
+            </summary>
+            <param name="obj">
+            id id
+            </param>
+        </member>
+        <member name="M:GWServiceAPI.Net.Controllers.EventController.add_memgroup_item(Newtonsoft.Json.Linq.JObject)">
+            <summary>
+            添加分组人员
+            </summary>
+            <param name="obj">
+             parentId 父级id
+             workNo 工号
+            </param>
         </member>
         <member name="M:GWServiceAPI.Net.Controllers.EventController.get_today_meet_num(Newtonsoft.Json.Linq.JObject)">
             <summary>
@@ -652,7 +733,9 @@
             <param name="obj">
                room 会议室
                result 审批结果,同意为1,不同意为2
-               id 会议id              
+               techPopId 技术支持人员id
+               propPopId 物业支持人员id
+               id 会议id 
                reason 原因
             </param>
         </member>
@@ -969,6 +1052,14 @@
         <member name="M:GWServiceAPI.Net.Controllers.EventController.get_all_depart(Newtonsoft.Json.Linq.JObject)">
             <summary>
             获取全部都得部门分类
+            </summary>
+            <param name="obj">
+             
+            </param>
+        </member>
+        <member name="M:GWServiceAPI.Net.Controllers.EventController.get_all_depart_nobank(Newtonsoft.Json.Linq.JObject)">
+            <summary>
+            获取全部都得部门分类(非行外)
             </summary>
             <param name="obj">
              

@@ -100,6 +100,7 @@ function getDayName(day){
 }
 function hideMulCheck(dom){
 		$(dom).find('.checkWrap').hide()
+		$(dom).find('.memSelect').hide();
 //		$("#").css({borderColor:"#66afe9",outline:"0"});
 	}
 function reLogin(){
@@ -359,7 +360,7 @@ function sms(tel,cont){
 	console.log(data)
 	$.ajax({
 		type:"post",
-		url:"http://168.7.1.192:9000/api/msg/sms",
+		url:"http://10.7.1.192:9000/api/msg/sms",
 		async:true,
 		data: data,
 		success:function(res){
@@ -385,7 +386,7 @@ function mail(sender,sendTo,copyTo,hiddenTo,title,content){
 	console.log(data)
 	$.ajax({
 		type:"post",
-		url:"http://168.7.1.192:9000/api/msg/mail",
+		url:"http://10.7.1.192:9000/api/msg/mail",
 		async:true,
 		data: data,
 		success:function(res){

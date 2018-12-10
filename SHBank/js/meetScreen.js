@@ -169,7 +169,7 @@ function getNowMeetListData() {
 				$(".meet-container").show();
 				myTimer=setTimeout(getNowMeetListData, 10000);
 			} else {
-				$(".meet-container").hide();
+				// $(".meet-container").hide();
 				$(".container-table table tr th").css({
 					border: "0px solid"
 				})
